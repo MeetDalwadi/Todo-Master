@@ -41,46 +41,47 @@ function App() {
     localStorage.setItem("todos", JSON.stringify(todos));
   }, [todos]);
 
-    return (
-    <TodoProvider value={{ todos, addTodo, updateTodo, deleteTodo, toggleComplete }}>
-      <div className="min-h-screen bg-gradient-to-br from-purple-50 to-blue-50 py-4 md:py-8 flex flex-col">
-        <div className="w-full px-4 mx-auto flex-1" style={{ maxWidth: '100%', width: '100%' }}>
-          {/* Header - Mobile Optimized */}
-          <div className="text-center mb-6 md:mb-10">
-            <h1 className="text-3xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-blue-600 mb-2 md:mb-4">
+  return (
+    <TodoProvider
+      value={{ todos, addTodo, updateTodo, deleteTodo, toggleComplete }}
+    >
+      <div className="min-h-screen bg-gradient-to-br from-purple-50 to-blue-50 py-8">
+        <div className="max-w-2xl mx-auto px-4">
+          {/* Header */}
+          <div className="text-center mb-10">
+            <h1 className="text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-blue-600 mb-4">
               Todo Master
             </h1>
-            <p className="text-gray-600 text-base md:text-lg">
+            <p className="text-gray-600 text-lg">
               Organize your life, one task at a time
             </p>
           </div>
 
-          {/* Todo Form - Mobile Optimized */}
-          <div className="bg-white rounded-lg md:rounded-xl shadow-md md:shadow-lg p-4 md:p-6 mb-6 md:mb-8">
+          {/* Todo Form */}
+          <div className="bg-white rounded-xl shadow-lg p-6 mb-8">
             <TodoForm />
           </div>
 
-          {/* Todo List - Mobile Optimized */}
-          <div className="space-y-3 md:space-y-4">
+          {/* Todo List */}
+          <div className="space-y-4">
             {todos.length === 0 ? (
-              <div className="text-center py-8 md:py-10">
-                <div className="text-gray-400 text-2xl mb-3">📭</div>
-                <p className="text-gray-500 text-base md:text-lg">Your todo list is empty</p>
-                <p className="text-gray-400 text-sm md:text-base">
+              <div className="text-center py-10">
+                <div className="text-gray-400 text-xl mb-2">📭</div>
+                <p className="text-gray-500">Your todo list is empty</p>
+                <p className="text-gray-400 text-sm">
                   Add a task to get started!
                 </p>
               </div>
             ) : (
-              todos.map((todo) => (
-                <TodoItem key={todo.id} todo={todo} />
-              ))
+              todos.map((todo) => <TodoItem key={todo.id} todo={todo} />)
             )}
           </div>
 
-          {/* Stats - Mobile Optimized */}
+          {/* Stats */}
           {todos.length > 0 && (
-            <div className="mt-4 md:mt-6 text-xs md:text-sm text-gray-500 text-center">
-              {todos.filter(t => t.completed).length} of {todos.length} tasks completed
+            <div className="mt-6 text-sm text-gray-500 text-center">
+              {todos.filter((t) => t.completed).length} of {todos.length} tasks
+              completed
             </div>
           )}
         </div>
