@@ -18,20 +18,23 @@ function TodoForm() {
   };
 
   return (
-    <form onSubmit={add} className="flex gap-3">
-      <input
-        type="text"
-        value={todo}
-        onChange={(e) => setTodo(e.target.value)}
-        className="flex-1 px-5 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-200 shadow-sm"
-        placeholder="What needs to be done?"
-      />
-      <button
-        type="submit"
-        className="px-6 py-3 bg-gradient-to-r from-purple-600 to-blue-600 text-white font-medium rounded-lg hover:from-purple-700 hover:to-blue-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 transition-all duration-200 shadow-md"
-      >
-        Add Task
-      </button>
+    <form onSubmit={add} className="w-full">
+      <div className="flex flex-col sm:flex-row gap-2 sm:gap-3">
+        <input
+          type="text"
+          value={todo}
+          onChange={(e) => setTodo(e.target.value)}
+          className="flex-1 px-4 py-3 text-base sm:text-lg rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-200 shadow-sm"
+          placeholder="What needs to be done?"
+          autoFocus
+        />
+        <button
+          type="submit"
+          className="px-4 py-3 sm:px-6 bg-gradient-to-r from-purple-600 to-blue-600 text-white font-medium rounded-lg hover:from-purple-700 hover:to-blue-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 transition-all duration-200 shadow-md active:scale-95"
+        >
+          <span className="block sm:inline">Add Task</span>
+        </button>
+      </div>
     </form>
   );
 }
